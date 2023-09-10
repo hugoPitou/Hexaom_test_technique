@@ -15,8 +15,8 @@ class MapboxController extends AbstractController
     public function map(ContactRepository $contactRepository, CallApiService $callApiService): Response
     {
         $contacts = $contactRepository->findAll();
-        //$allCoordinate = [];
-
+        $allCoordinates = [];
+        
         foreach ($contacts as $contact) {
             $address = $contact->getFullAddress();
             $fullname = $contact->getFullname();

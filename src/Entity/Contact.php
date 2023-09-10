@@ -20,7 +20,7 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[Assert\Regex('/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/')]
+    #[Assert\Regex('/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/',message: "Le numéro n'est pas valide")]
     #[ORM\Column(length: 255)]
     private ?string $phone = null;
 
@@ -30,7 +30,7 @@ class Contact
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
 
-    #[Assert\Regex('/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/')]
+    #[Assert\Regex('/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/',message: "Le code postal n'est pas valide")]
     #[ORM\Column(nullable: true)]
     private ?int $zipcode = null;
 

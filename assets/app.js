@@ -29,6 +29,17 @@ if (document.getElementById('map')) {
   });
 }
 
+/*map.on('zoom', function () {
+  var currentZoom = map.getZoom();
+
+  // Vérifiez si le niveau de zoom est supérieur à 3
+  if (currentZoom > 7.5) {
+      // marker address exact
+  } else {
+      // marker par departement
+  }
+});*/
+
 $(document).ready(function () {
 
   /**************** Afiicher de la map avec mapbox  ************************************************/
@@ -44,13 +55,10 @@ $(document).ready(function () {
     for (var departement in parsedData) {
       if (parsedData.hasOwnProperty(departement)) {
         var innerObject = parsedData[departement];
-        //console.log("Département : " + departement);
         
         for (var fullname in innerObject) {
           if (innerObject.hasOwnProperty(fullname)) {
             var Coordinate = innerObject[fullname];
-            /*console.log("Nom : " + fullname);
-            console.log("coordonnées : " + Coordinate);*/
   
             var marker = new mapboxgl.Marker()
               .setLngLat([Coordinate[0], Coordinate[1]]) // Coordinates [longitude, latitude]
@@ -68,6 +76,7 @@ $(document).ready(function () {
     language: {
       info: "_START_ - _END_ sur _TOTAL_",
       lengthMenu: "Lignes par page : _MENU_",
+      emptyTable: "Vous n'avez pas de contacts enregistrés. Cliquez sur Ajouter pour créer un nouveau contact.",
     },
     dom: 'rt<"bottom d-flex align-items-center justify-content-end me-3"lip><"clear">', // Configurez l'agencement des éléments de DataTables
   });
@@ -92,7 +101,9 @@ $(document).ready(function () {
   $(".form-contact").find("ul").each(function(index, element) {
     // "index" est l'index de l'élément actuel dans la collection
     // "element" est l'élément DOM actuel (l'élément <ul> en l'occurrence)
+    console.log($(element).find("li").text());
     $(element).parent().find("input").addClass("is-invalid");
+    $(element).parent().find(".invalid-feedback").text($(element).find("li").text());
     $(element).remove();
   });
  

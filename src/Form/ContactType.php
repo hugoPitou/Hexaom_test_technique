@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,6 +23,7 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('firstname',TextType::class, [
+                
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -46,7 +48,7 @@ class ContactType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
             ])
             ->add('city',TextType::class, [
                 'required' => false,
