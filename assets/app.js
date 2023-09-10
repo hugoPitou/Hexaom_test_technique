@@ -84,22 +84,8 @@ $(document).ready(function () {
 
   /******* afficher en details la ligne du contact sur lequel on click *********/ 
 
-  $('.ligne').on('click', function () {
-    // Récupérez la valeur de l'attribut "data-my-data" (contact.id)
-    const contactId = $(this).data('my-data');
-    $.ajax({
-      url: '/contact/'+contactId, // Remplacez par l'URL appropriée avec l'ID du contact
-      type: 'GET',
-      success: function (response) {
-        const contactDetails = $(response).find('#show_container');
-        console.log(contactDetails);
-        $('#liste_contacts').removeClass('w-100');
-        $('#liste_contacts').css({'width':'60%'});
-        $('#contact-details-container').css({'width':'40%'});
-        $('#contact-details-container').html(contactDetails);
-      }
-    });
-  });
+  loadContactDetailsAtPageLink();
+  loadContactDetails();
 
   /******* erreur dans le formulaire de contact *********/ 
   
@@ -112,3 +98,30 @@ $(document).ready(function () {
  
 
 });
+
+function loadContactDetailsAtPageLink() {
+  $('.page-link').on('click', function () {
+    $(document).ready(function () {
+      loadContactDetailsAtPageLink();
+      loadContactDetails();
+    });
+  });
+};
+
+function loadContactDetails() {
+  $('.ligne').on('click', function () {
+    // Récupérez la valeur de l'attribut "data-my-data" (contact.id)
+    const contactId = $(this).data('my-data');
+    $.ajax({
+      url: '/contact/'+contactId, 
+      type: 'GET',
+      success: function (response) {
+        const contactDetails = $(response).find('#show_container');
+        $('#liste_contacts').removeClass('w-100');
+        $('#liste_contacts').css({'width':'60%'});
+        $('#contact-details-container').css({'width':'40%'});
+        $('#contact-details-container').html(contactDetails);
+      }
+    });
+  });
+}
