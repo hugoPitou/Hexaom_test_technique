@@ -1,0 +1,58 @@
+<main class="d-flex flex-nowrap">
+
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-sidebar" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <img class="w-100 pe-4" src="{{ asset('img/logo-HEXAOM-blanc.png') }}" alt="logo hexaom"/>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto ">
+      <li class="p-1">
+        <a href="#" class="nav-link text-white" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          <i class="fa-solid fa-graduation-cap me-2"></i>Academy
+        </a>
+      </li>
+      <li class="p-1">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          <i class="fa-regular fa-message me-2"></i>Chat
+        </a>
+      </li>
+      <li class="p-1">
+        {% if (app.request.attributes.get('_route') == 'app_contact_index' or app.request.attributes.get('_route') == 'app_contact_new' or app.request.attributes.get('_route') == 'app_contact_edit'or app.request.attributes.get('_route') == 'app_contact_map') %}
+        <a href="{{ path('app_contact_index') }}" class="nav-link text-white active">
+        {% else %}
+        <a href="{{ path('app_contact_index') }}" class="nav-link text-white ">
+        {% endif %}
+          <svg class="bi pe-none me-2 " width="16" height="16"></svg>
+          <i class="fa-solid fa-people-group me-2"></i> Contacts
+        </a>
+      </li>
+      <li class="p-1">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          <i class="fa-solid fa-cart-shopping me-2"></i>ECommerce
+        </a>
+      </li>
+      <li class="p-1">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          <i class="fa-solid fa-cloud me-2"></i>File Manager
+        </a>
+      </li>
+      <li class="p-1">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          <i class="fa-solid fa-circle-info me-2"></i>Help Center 
+        </a>
+      </li>
+      <li class="p-1">
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+            <i class="fa-regular fa-envelope me-2"></i><span>Mailbox</span><span class="badge rounded-pill bg-danger ms-3">12</span>
+        </a>
+      </li>
+    </ul>    
+  </div>
+</main>

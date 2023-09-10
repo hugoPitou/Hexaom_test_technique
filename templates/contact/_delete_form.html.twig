@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_contact_delete', {'id': contact.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce contact ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+    <button style="width: 130px;" class="btn btn-danger rounded-pill px-4 mx-2 gothicBold"><i class="fa-solid fa-trash me-2"></i>Delete</button>
+</form>

@@ -1,0 +1,41 @@
+<div class="p-5">
+    {{ form_start(form) }}
+        <div class="row py-2">
+            <div class="col-md-4">
+                {{ form_label(form.lastname, 'Nom') }}
+                {{ form_widget(form.lastname) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_label(form.firstname, 'Prénom') }}
+                {{ form_widget(form.firstname) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_errors(form.phone)}}
+                {{ form_label(form.phone, 'Téléphone') }}
+                {{ form_widget(form.phone) }}
+            </div>
+        </div>
+        <div class="form-group py-2">
+            {{ form_label(form.mail, 'Email') }}
+            {{ form_widget(form.mail) }}
+        </div>
+        <div class="form-group py-2">
+            {{ form_label(form.address, 'Addresse') }}
+            {{ form_widget(form.address) }}
+        </div>
+        <div class="row py-2">
+            <div class="col-md-6">
+                {{ form_errors(form.zipcode) }}
+                {{ form_label(form.zipcode, 'Code postal') }}
+                {{ form_widget(form.zipcode) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.city, 'Ville') }}
+                {{ form_widget(form.city) }}
+            </div>
+        </div>
+        <div class="d-flex justify-content-end py-2 m-2">
+            <button class="btn btn-primary rounded-pill px-5 ">{{ button_label|default('Save') }}</button>
+        </div>
+    {{ form_end(form) }}
+</div>
