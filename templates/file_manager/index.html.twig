@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}File Manager{% endblock %}
+
+{% block body %}
+<div id="liste_files" class="w-100 h-100">
+<div class="border-top border-4"></div>
+<div class=" pt-3">
+    <div class="w-100">
+        <h1 class="gothicBold px-4">File Manager</h1>
+        <h5 class="px-5">{{ nbFiles }} fichier</h5>
+        <div class="border-top border-4"></div>
+        <div class="px-4">
+            <h3 class="gothicBold my-2">Upload un fichier</h3>
+            {{ form_start(form) }}
+
+                {{ form_widget(form.file) }}
+                <div class="d-flex justify-content-end pb-2 m-2">
+                    <button class="btn btn-primary rounded-pill px-5 ">{{ button_label|default('Save') }}</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+        <div class="border-top border-4"></div>
+        <div class="d-flex my-2">
+            <div class=" w-100 me-2 px-4">
+                <h3 class="gothicBold my-2">Rechercher un fichier</h3>
+                <form>
+                    <div class="d-flex align-items-center rounded-pill border p-2 w-100">
+                        <i class="fa-solid fa-magnifying-glass px-2"></i>
+                        <input type="text" id="customSearch" placeholder="Rechercher" class="border border-0 w-100">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="border-top border-4"></div>
+    <div class="">
+        <table class="table table-datatable-filemanager">
+            <thead >
+                <tr class="">
+                    <th class="gothicBold"><div class="ms-3">Nom du fichier</div></th>
+                </tr>
+            </thead>
+            <tbody id="body">
+            {% for file in files %}
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-between">
+                                <a target="_blank" href="{{ asset('uploads/file/' ~ file.fillname) }}" class="ms-3">{{ file.fillname }} <i class="fa-regular fa-eye ms-2"></i></a>
+                                <a href="{{ path('app_file_delete', {'id': file.id}) }}" class="text-danger me-3"><i class="fa-solid fa-trash me-2"></i><b>Supprimer</b></a>
+                            </div>
+                        </td>
+
+                    </tr>
+            {% else %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

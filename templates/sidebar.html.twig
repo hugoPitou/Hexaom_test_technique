@@ -36,7 +36,11 @@
         </a>
       </li>
       <li class="p-1">
-        <a href="#" class="nav-link text-white">
+        {% if (app.request.attributes.get('_route') == 'app_file_manager') %}
+        <a href="{{ path('app_file_manager') }}" class="nav-link text-white active">
+        {% else %}
+        <a href="{{ path('app_file_manager') }}" class="nav-link text-white ">
+        {% endif %}
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           <i class="fa-solid fa-cloud me-2"></i>File Manager
         </a>

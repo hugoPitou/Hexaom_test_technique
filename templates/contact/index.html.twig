@@ -3,62 +3,60 @@
 {% block title %}Contacts{% endblock %}
 
 {% block body %}
-    <div class="d-flex flex-column w-100">
-        <div>{% include "./navbar.html.twig" %}</div>
-        <div class="d-flex flex-row w-100 h-100">
-        {#             affichage liste contacts                   #}
-            <div id="liste_contacts" class="w-100 h-100">
-                <div class="border-top border-4"></div>
-                <div class="ps-4 pt-3">
-                    <div class="w-100">
-                        <h1 class="gothicBold">Contacts</h1>
-                        <h5 class="px-2">{{ nbContacts }} contacts</h5>
-                        <div class="d-flex align-items-center flex-row-reverse">
-                            <div class="p-2"><a class="btn btn-primary rounded-pill px-4 mx-2 gothicBold" style="width: 140px;" href="{{ path('app_contact_new') }}"><i class="fa-solid fa-plus pe-2"></i>Ajouter</a></div>
-                            <div class="p-2"><a class="btn btn-success rounded-pill px-4 mx-2 gothicBold" style="width: 180px;" href="{{ path('app_contact_map') }}"><i class="fa-solid fa-location-dot pe-2"></i></i>Géolocaliser</a></div>
-                            <div class=" w-100 me-2 ">
-                                <form>
-                                    <div class="d-flex align-items-center rounded-pill border p-2 w-100">
-                                        <i class="fa-solid fa-magnifying-glass px-2"></i>
-                                        <input type="text" id="customSearch" placeholder="Rechercher" class="border border-0 w-100">
-                                    </div>
-                                </form>
-                            </div>
+    
+    <div class="d-flex flex-row w-100 h-100">
+    {#             affichage liste contacts                   #}
+        <div id="liste_contacts" class="w-100 h-100">
+            <div class="border-top border-4"></div>
+            <div class="ps-4 pt-3">
+                <div class="w-100">
+                    <h1 class="gothicBold">Contacts</h1>
+                    <h5 class="px-2">{{ nbContacts }} contacts</h5>
+                    <div class="d-flex align-items-center flex-row-reverse">
+                        <div class="p-2"><a class="btn btn-primary rounded-pill px-4 mx-2 gothicBold" style="width: 140px;" href="{{ path('app_contact_new') }}"><i class="fa-solid fa-plus pe-2"></i>Ajouter</a></div>
+                        <div class="p-2"><a class="btn btn-success rounded-pill px-4 mx-2 gothicBold" style="width: 180px;" href="{{ path('app_contact_map') }}"><i class="fa-solid fa-location-dot pe-2"></i></i>Géolocaliser</a></div>
+                        <div class=" w-100 me-2 ">
+                            <form>
+                                <div class="d-flex align-items-center rounded-pill border p-2 w-100">
+                                    <i class="fa-solid fa-magnifying-glass px-2"></i>
+                                    <input type="text" id="customSearch" placeholder="Rechercher" class="border border-0 w-100">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="border-top border-4"></div>
-                    <div class="">
-                        <table class="table table-datatable">
-                            <thead >
-                                <tr class="">
-                                    <th class="gothicBold"><div class="ms-4">Nom</div></th>
-                                    <th class="gothicBold">Prénom</th>
-                                    <th class="gothicBold">Téléphone</th>
-                                    <th class="gothicBold">Email</th>
-                                    <th class="gothicBold">Localisation</th>
-                                 
+            </div>
+            <div class="border-top border-4"></div>
+                <div class="">
+                    <table class="table table-datatable-contacts">
+                        <thead >
+                            <tr class="">
+                                <th class="gothicBold"><div class="ms-4">Nom</div></th>
+                                <th class="gothicBold">Prénom</th>
+                                <th class="gothicBold">Téléphone</th>
+                                <th class="gothicBold">Email</th>
+                                <th class="gothicBold">Localisation</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="body">
+                        {% for contact in contacts %}
+                                <tr class="ligne" data-my-data="{{ contact.id }}">
+                                    <td><div class="my-2 ms-4">{{ contact.lastname }}</div></td>
+                                    <td><div class="my-2">{{ contact.firstname }}</div></td>
+                                    <td><div class="my-2">{{ contact.phone }}</div></td>
+                                    <td><div class="my-2">{{ contact.mail }}</div></td>
+                                    <td ><div class="my-2">{{ contact.getZipCity() }}</div></td>
                                 </tr>
-                            </thead>
-                            <tbody id="body">
-                            {% for contact in contacts %}
-                                    <tr class="ligne" data-my-data="{{ contact.id }}">
-                                        <td><div class="my-2 ms-4">{{ contact.lastname }}</div></td>
-                                        <td><div class="my-2">{{ contact.firstname }}</div></td>
-                                        <td><div class="my-2">{{ contact.phone }}</div></td>
-                                        <td><div class="my-2">{{ contact.mail }}</div></td>
-                                        <td ><div class="my-2">{{ contact.getZipCity() }}</div></td>
-                                    </tr>
-                            {% else %}
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                        {% else %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-            {#             affichage contact               #}
+            </div>
+        {#             affichage contact               #}
 
-            <div id="contact-details-container"></div>
-        </div>
+        <div id="contact-details-container"></div>
     </div>
     
 {% endblock %}

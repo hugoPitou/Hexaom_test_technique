@@ -72,11 +72,12 @@ $(document).ready(function () {
 
   /************ creation de la table contenant les contacts grace a datatables  **********************/
 
-  $('.table-datatable').DataTable({
+  $('.table-datatable-contacts').DataTable({
     language: {
       info: "_START_ - _END_ sur _TOTAL_",
       lengthMenu: "Lignes par page : _MENU_",
       emptyTable: "Vous n'avez pas de contacts enregistrés. Cliquez sur Ajouter pour créer un nouveau contact.",
+      zeroRecords: "Aucun contact trouvé",
     },
     dom: 'rt<"bottom d-flex align-items-center justify-content-end me-3"lip><"clear">', // Configurez l'agencement des éléments de DataTables
   });
@@ -86,7 +87,29 @@ $(document).ready(function () {
   $('#customSearch').on('keyup', function() {
     var searchValue = $(this).val();
     console.log(searchValue);
-    var dataTable = $('.table-datatable').DataTable();
+    var dataTable = $('.table-datatable-contacts').DataTable();
+
+    dataTable.search(searchValue).search(searchValue).draw();
+  });
+
+  /************ creation de la table contenant les fichier dans le FileManager grace a datatables  **********************/
+
+  $('.table-datatable-filemanager').DataTable({
+    language: {
+      info: "_START_ - _END_ sur _TOTAL_",
+      lengthMenu: "Lignes par page : _MENU_",
+      emptyTable: "Vous n'avez pas de fichier enregistrés. Cliquez sur Ajouter pour uploadé un fichier.",
+      zeroRecords: "Aucun fichier trouvé",
+    },
+    dom: 'rt<"bottom d-flex align-items-center justify-content-end me-3"lip><"clear">', // Configurez l'agencement des éléments de DataTables
+  });
+
+  $('.dataTables_info').addClass('pt-0 px-4 d-flex align-items-center');
+
+  $('#customSearch').on('keyup', function() {
+    var searchValue = $(this).val();
+    console.log(searchValue);
+    var dataTable = $('.table-datatable-filemanager').DataTable();
 
     dataTable.search(searchValue).search(searchValue).draw();
   });
