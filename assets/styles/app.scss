@@ -6,46 +6,50 @@
     font-family: Century_Gothic_bold;
     src: url(./font/07553_CenturyGothicBold.ttf);
 }
+
 body {
     font-family: Century_Gothic !important;
     font-size: 14px !important;
     background-color: lightgray;
 }
-// .font_gothic {
-//     font-family: Century_Gothic;
-// }
-.bg-sidebar {
-    background-color: #171717
-    ;
-}
+
 .gothicBold {
     font-family: Century_Gothic_bold !important;
     font-weight: bold;
 }
 
+/** couleur de fond de la sidebar */
+
+.bg-sidebar {
+    background-color: #171717;
+}
+
+/** taille du form de contact en fonction de la taille d'écran */
 @media screen and (min-width: 1300px) {
-    .form_new_contact {
+    .form_contact {
         width: 900px;
     }
 }
 
+/** lignes contacts */
+
 tr a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit the color from parent (usually black) */
+    text-decoration: none; 
+    color: inherit; 
 }
 
 tr a:hover {
-    text-decoration: none; /* Remove underline on hover */
-    color: inherit; /* Inherit the color from parent on hover (usually black) */
-    /* Any other styles you want to reset on hover */
+    text-decoration: none; 
+    color: inherit; 
 }
 
+/* couleur de fond logo contact dans le show */
 #logo_contact {
     background-color: #92a0cf;
 }
 
+/* enlever les border pour le search */
 #customSearch:focus {
-    outline: none; /* Remove the default outline (focus indicator) */
-    border: none;  /* Remove the border */
-    /* Add other styling as needed */
+    outline: none;
+    border: none; 
 }

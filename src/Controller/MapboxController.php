@@ -11,7 +11,7 @@ use App\Service\CallApiService;
 class MapboxController extends AbstractController
 {
 
-    #[Route('/map', name: 'app_contact_map')]
+    #[Route('/app/map', name: 'app_contact_map')]
     public function map(ContactRepository $contactRepository, CallApiService $callApiService): Response
     {
         $contacts = $contactRepository->findAll();

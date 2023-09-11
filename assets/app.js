@@ -106,8 +106,6 @@ $(document).ready(function () {
     $(element).parent().find(".invalid-feedback").text($(element).find("li").text());
     $(element).remove();
   });
- 
-
 });
 
 function loadContactDetailsAtPageLink() {
@@ -124,7 +122,7 @@ function loadContactDetails() {
     // Récupérez la valeur de l'attribut "data-my-data" (contact.id)
     const contactId = $(this).data('my-data');
     $.ajax({
-      url: '/contact/'+contactId, 
+      url: '/app/contact/'+contactId, 
       type: 'GET',
       success: function (response) {
         const contactDetails = $(response).find('#show_container');

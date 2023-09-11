@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 
-#[Route('/contact')]
+#[Route('/app/contact')]
 class ContactController extends AbstractController
 {
     public function __construct(private ManagerRegistry $doctrine) {}
