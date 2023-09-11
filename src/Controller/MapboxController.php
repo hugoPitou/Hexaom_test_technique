@@ -25,7 +25,7 @@ class MapboxController extends AbstractController
             if ($address != "  ") {
             $apiresult = $callApiService->getCoordinate($address);
                 $coordinates = $apiresult['features'][0]['geometry']['coordinates'];
-                // Vérifiez si le nom complet existe déjà dans $allCoordinate
+                // Vérifiez si le nom complet existe déjà dans $allCoordinates
                 if (!isset($allCoordinates[$dep][$fullname])) {
                     // Si non, créez un nouveau tableau avec l'adresse
                     $allCoordinates[$dep][$fullname] = [];

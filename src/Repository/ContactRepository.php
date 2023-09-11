@@ -45,17 +45,6 @@ class ContactRepository extends ServiceEntityRepository
        ;
    }
 
-    // peux servir 
-
-   public function findAllPlacesInRegion() {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->leftJoin('p.region', 'r')
-            ->where('r.name like :region_name' )
-            ->setParameter('region_name', 'Республика Крым');
-        return $queryBuilder->getQuery()->getResult();
-    }
-
-
 //    public function findOneBySomeField($value): ?Contact
 //    {
 //        return $this->createQueryBuilder('c')

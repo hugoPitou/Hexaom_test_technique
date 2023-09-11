@@ -1,7 +1,7 @@
 
 # Hexaom Test Technique par Hugo Pitou
 
-projet : Symfony 6.3 + PHP 8.2.10 avec BDD sous Docker
+Projet : Symfony 6.3 + PHP 8.2.10 avec BDD sous Docker
 
 ## Requirements
 
@@ -12,15 +12,15 @@ projet : Symfony 6.3 + PHP 8.2.10 avec BDD sous Docker
 
 ## Installation
 
-Cloner le project
+Cloner le projet
 
 ```bash
   git clone https://github.com/hugoPitou/hexaom_test.git
 ```
 
-### Ouvrer un terminal dans le dossier du projet
+### Ouvrir un terminal dans le dossier du projet
 
-Lancer le docker-compose.
+Lancer docker-compose.
 
 ```bash
   docker-compose up -d
@@ -41,19 +41,19 @@ Lancer la compilation de ressources front-end
   npm run build
 ```
 
-Récuperer la url de la bdd, copié l'url qui se trouve sur cette ligne DATABASE_URL=
+Récupérer l'url de la base de données, copier l'url qui se trouve sur cette ligne DATABASE_URL=
 
 ```bash
   symfony var:export --multiline
 ```
 
-une fois url recupéré coller la dans le fichier .ENV comme indiquer:
+une fois l'url recupérée, coller-la dans le fichier .ENV comme indiqué ci-dessous:
 
 ```yaml
   DATABASE_URL="{url_récupéré}"
 ```
 
-Retourner sur la console et exécuter la migration.
+Retourner sur la console et exécuter la migration 
 
 ```bash
   php bin/console d:m:m
