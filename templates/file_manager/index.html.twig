@@ -11,18 +11,18 @@
         <h5 class="px-5">{{ nbFiles }} fichier</h5>
         <div class="border-top border-4"></div>
         <div class="px-4">
-            <h3 class="gothicBold my-2">Upload un fichier</h3>
+            <h3 class="gothicBold my-2">Téléverser un fichier</h3>
             {{ form_start(form) }}
 
                 {{ form_widget(form.file) }}
                 <div class="d-flex justify-content-end pb-2 m-2">
-                    <button class="btn btn-primary rounded-pill px-5 ">{{ button_label|default('Save') }}</button>
+                    <button class="btn btn-primary rounded-pill px-5 ">{{ button_label|default('Téléversement') }}</button>
                 </div>
             {{ form_end(form) }}
         </div>
         <div class="border-top border-4"></div>
         <div class="d-flex my-2">
-            <div class=" w-100 me-2 px-4">
+            <div class=" w-100 me-2 px-4 mb-3">
                 <h3 class="gothicBold my-2">Rechercher un fichier</h3>
                 <form>
                     <div class="d-flex align-items-center rounded-pill border p-2 w-100">

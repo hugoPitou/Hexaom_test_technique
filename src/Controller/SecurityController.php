@@ -11,6 +11,9 @@ use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Authentication\AuthenticatorManagerInterface;
 
 class SecurityController extends AbstractController
 {
@@ -55,6 +58,10 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+
+            /*$token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            $authenticatedToken = $authenticationManager->authenticate($token);
+            $tokenStorage->setToken($authenticatedToken);*/
 
             return $this->redirectToRoute('app_contact_index');
         }

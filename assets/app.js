@@ -76,8 +76,13 @@ $(document).ready(function () {
     language: {
       info: "_START_ - _END_ sur _TOTAL_",
       lengthMenu: "Lignes par page : _MENU_",
-      emptyTable: "Vous n'avez pas de contacts enregistrés. Cliquez sur Ajouter pour créer un nouveau contact.",
+      emptyTable: "Vous n'avez pas de contact enregistré. Cliquez sur Ajouter pour créer un nouveau contact.",
       zeroRecords: "Aucun contact trouvé",
+      infoFiltered: "",
+      paginate: {
+        "previous": "Précédent",
+        "next": "Suivant"
+      }
     },
     dom: 'rt<"bottom d-flex align-items-center justify-content-end me-3"lip><"clear">', // Configurez l'agencement des éléments de DataTables
   });
@@ -86,10 +91,12 @@ $(document).ready(function () {
 
   $('#customSearch').on('keyup', function() {
     var searchValue = $(this).val();
-    console.log(searchValue);
     var dataTable = $('.table-datatable-contacts').DataTable();
 
     dataTable.search(searchValue).search(searchValue).draw();
+
+    loadContactDetailsAtPageLink();
+    loadContactDetails();
   });
 
   /************ creation de la table contenant les fichier dans le FileManager grace a datatables  **********************/
@@ -98,8 +105,13 @@ $(document).ready(function () {
     language: {
       info: "_START_ - _END_ sur _TOTAL_",
       lengthMenu: "Lignes par page : _MENU_",
-      emptyTable: "Vous n'avez pas de fichier enregistrés. Cliquez sur Ajouter pour uploadé un fichier.",
+      emptyTable: "Vous n'avez pas de fichier enregistré.",
       zeroRecords: "Aucun fichier trouvé",
+      infoFiltered: "",
+      paginate: {
+        "previous": "Précédent",
+        "next": "Suivant"
+      }
     },
     dom: 'rt<"bottom d-flex align-items-center justify-content-end me-3"lip><"clear">', // Configurez l'agencement des éléments de DataTables
   });
@@ -108,7 +120,6 @@ $(document).ready(function () {
 
   $('#customSearch').on('keyup', function() {
     var searchValue = $(this).val();
-    console.log(searchValue);
     var dataTable = $('.table-datatable-filemanager').DataTable();
 
     dataTable.search(searchValue).search(searchValue).draw();
@@ -124,7 +135,15 @@ $(document).ready(function () {
   $(".form-contact").find("ul").each(function(index, element) {
     // "index" est l'index de l'élément actuel dans la collection
     // "element" est l'élément DOM actuel (l'élément <ul> en l'occurrence)
-    console.log($(element).find("li").text());
+    $(element).parent().find("input").addClass("is-invalid");
+    $(element).parent().find(".invalid-feedback").text($(element).find("li").text());
+    $(element).remove();
+  });
+  
+  /******* erreur dans le formulaire d'enregistrement de compte *********/ 
+  $(".form-register-validation").find("ul").each(function(index, element) {
+    // "index" est l'index de l'élément actuel dans la collection
+    // "element" est l'élément DOM actuel (l'élément <ul> en l'occurrence)
     $(element).parent().find("input").addClass("is-invalid");
     $(element).parent().find(".invalid-feedback").text($(element).find("li").text());
     $(element).remove();

@@ -88,7 +88,7 @@ class FileManagerController extends AbstractController
         // Récupérez le nom du fichier à partir de l'entité FileManager
         $filename = $fileManager->getFillname();
     
-        // Spécifiez le répertoire où se trouvent les fichiers à supprimer (assurez-vous que c'est le même répertoire que celui utilisé pour l'upload)
+        // Spécifiez le répertoire où se trouvent les fichiers à supprimer 
         $uploadDirectory = $this->getParameter('upload_file_directory');
     
         // Vérifiez si le fichier existe avant de le supprimer
